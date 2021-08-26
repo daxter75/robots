@@ -30,6 +30,6 @@ Route::fallback(function (Request $request) {
     return response()->json([
         'statusCode' => 404,
         'error' => 'Not Found!',
-        'message' => 'Not found URI: ' . $request->getMethod() . ' ' . $request->getRequestUri(),
+        'message' => 'URI: ' . $request->getMethod() . ' ' . $request->getRequestUri() . ' not found',
     ], 404);
 });
