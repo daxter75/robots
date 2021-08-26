@@ -11,7 +11,7 @@ class DanceoffController extends Controller
 {
     public function index()
     {
-        return DanceoffResource::collection(Danceoff::all());
+        return DanceoffResource::collection(Danceoff::orderBy('id', 'DESC')->get());
     }
 
     public function populated()
@@ -27,7 +27,7 @@ class DanceoffController extends Controller
                 'loser' => $this->searchForRobot($danceoff['loser'], $robots),
             ]);
         }
-        return $res;
+        return array_reverse($res);
     }
 
     private function searchForRobot($id, $array)
