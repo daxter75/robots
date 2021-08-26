@@ -26,6 +26,10 @@ Route::get('robots/{robot:id}', [RobotController::class, 'show']);
 Route::get('danceoffs', [DanceoffController::class, 'index']);
 Route::get('danceoffs/populated', [DanceoffController::class, 'populated']);
 
-Route::fallback(function () {
-    return response()->json(['error' => 'Not Found!'], 404);
+Route::fallback(function (Request $request) {
+    return response()->json([
+        'statusCode' => 404,
+        'error' => 'Not Found!',
+        'message' => 'Not found URI: ' . $request->getMethod() . ' ' . $request->getRequestUri(),
+    ], 404);
 });
