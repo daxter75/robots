@@ -4,6 +4,7 @@ use \App\Http\Controllers\RobotController;
 use \App\Http\Controllers\DanceoffController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +29,8 @@ Route::get('danceoffs/populated', [DanceoffController::class, 'populated']);
 
 Route::fallback(function (Request $request) {
     return response()->json([
-        'statusCode' => 404,
+        'statusCode' => Response::HTTP_NOT_FOUND,
         'error' => 'Not Found!',
         'message' => 'URI: ' . $request->getMethod() . ' ' . $request->getRequestUri() . ' not found',
-    ], 404);
+    ], Response::HTTP_NOT_FOUND);
 });
