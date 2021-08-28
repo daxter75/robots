@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\DanceoffResource;
+use App\Http\Resources\RobotResource;
 use App\Models\Danceoff;
 use App\Models\Robot;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class DanceoffController extends Controller
 
     public function __construct()
     {
-        $this->robots = Robot::all()->toArray();
+        $this->robots = Robot::all();
     }
 
     public function index()
@@ -25,12 +26,12 @@ class DanceoffController extends Controller
 
     public function store()
     {
-        $canSave = false;
         $danceoffs = $this->validateStart();
 
         foreach ($danceoffs as $danceoff) {
             $res = [];
             foreach ($danceoff as $data) {
+                $canSave = false;
 
                 // check dancers in database
                 $winner = $this->searchForRobot($data['winner']) ? $data['winner'] : '';
@@ -81,18 +82,31 @@ class DanceoffController extends Controller
         return array_reverse($res);
     }
 
+    public function leaderboard()
+    {
+        $res = [];
+        $wins = Danceoff::select(Danceoff::raw("count('winner') as wins"), 'winner')
+            ->groupBy('winner')
+            ->orderBy('wins', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->toArray();
+
+        foreach ($wins as $win) {
+            array_push($res,  [
+                'wins' => $win['wins'],
+                'winner' => $this->searchForRobot($win['winner']),
+            ]);
+        }
+
+        return $res;
+    }
+
     private function searchForRobot($id)
     {
         foreach ($this->robots as $robot) {
             if ($robot['id'] === $id) {
-                return [
-                    'id' => $robot['id'],
-                    'name' => $robot['name'],
-                    'powermove' => $robot['powermove'],
-                    'experience' => $robot['experience'],
-                    'outOfOrder' => (bool)$robot['outOfOrder'],
-                    'avatar' => $robot['avatar'],
-                ];
+                return new RobotResource($robot);
             }
         }
         return null;
@@ -100,7 +114,7 @@ class DanceoffController extends Controller
 
     private function validateStart() {
         return \request()->validate([
-            'danceoffs' => 'required|array',
+            'danceoffs' => 'required',
         ]);
     }
 }

@@ -28,6 +28,8 @@ Route::get('danceoffs', [DanceoffController::class, 'index']);
 Route::post('danceoffs', [DanceoffController::class, 'store']);
 Route::get('danceoffs/populated', [DanceoffController::class, 'populated']);
 
+Route::get('leaderboard', [DanceoffController::class, 'leaderboard']);
+
 Route::fallback(function (Request $request) {
     return response()->json([
         'statusCode' => Response::HTTP_NOT_FOUND,
