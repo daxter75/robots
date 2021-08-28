@@ -25,6 +25,7 @@ Route::get('robots', [RobotController::class, 'index']);
 Route::get('robots/{robot:id}', [RobotController::class, 'show']);
 
 Route::get('danceoffs', [DanceoffController::class, 'index']);
+Route::post('danceoffs', [DanceoffController::class, 'store']);
 Route::get('danceoffs/populated', [DanceoffController::class, 'populated']);
 
 Route::fallback(function (Request $request) {
