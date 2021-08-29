@@ -6,7 +6,7 @@
                 <p>No leaderboard list.</p>
             </div>
             <div v-for="(robot, index) in robots">
-                <div class="mb-4 pl-4">
+                <router-link :to="'/robots/' + robot.winner.id" class="mb-4 pl-4">
                     <p class="text-blue-600">
                         <span>{{ index+1 }}</span>.
                         <span class="font-bold">{{ robot.winner.name }}</span>,
@@ -14,7 +14,7 @@
                             <span v-if="robot.wins > 1" class="text-gray-400"> wins</span>
                             <span v-else class="text-gray-400"> win</span>
                     </p>
-                </div>
+                </router-link>
             </div>
         </div>
     </div>

@@ -2226,7 +2226,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "RobotsShow",
   data: function data() {
@@ -20760,29 +20759,40 @@ var render = function() {
               : _vm._e(),
             _vm._v(" "),
             _vm._l(_vm.robots, function(robot, index) {
-              return _c("div", [
-                _c("div", { staticClass: "mb-4 pl-4" }, [
-                  _c("p", { staticClass: "text-blue-600" }, [
-                    _c("span", [_vm._v(_vm._s(index + 1))]),
-                    _vm._v(".\n                    "),
-                    _c("span", { staticClass: "font-bold" }, [
-                      _vm._v(_vm._s(robot.winner.name))
-                    ]),
-                    _vm._v(",\n                    "),
-                    _c("span", { staticClass: "text-gray-400" }, [
-                      _vm._v(_vm._s(robot.wins))
-                    ]),
-                    _vm._v(" "),
-                    robot.wins > 1
-                      ? _c("span", { staticClass: "text-gray-400" }, [
-                          _vm._v(" wins")
-                        ])
-                      : _c("span", { staticClass: "text-gray-400" }, [
-                          _vm._v(" win")
-                        ])
-                  ])
-                ])
-              ])
+              return _c(
+                "div",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "mb-4 pl-4",
+                      attrs: { to: "/robots/" + robot.winner.id }
+                    },
+                    [
+                      _c("p", { staticClass: "text-blue-600" }, [
+                        _c("span", [_vm._v(_vm._s(index + 1))]),
+                        _vm._v(".\n                    "),
+                        _c("span", { staticClass: "font-bold" }, [
+                          _vm._v(_vm._s(robot.winner.name))
+                        ]),
+                        _vm._v(",\n                    "),
+                        _c("span", { staticClass: "text-gray-400" }, [
+                          _vm._v(_vm._s(robot.wins))
+                        ]),
+                        _vm._v(" "),
+                        robot.wins > 1
+                          ? _c("span", { staticClass: "text-gray-400" }, [
+                              _vm._v(" wins")
+                            ])
+                          : _c("span", { staticClass: "text-gray-400" }, [
+                              _vm._v(" win")
+                            ])
+                      ])
+                    ]
+                  )
+                ],
+                1
+              )
             })
           ],
           2
@@ -21041,7 +21051,7 @@ var render = function() {
             [
               _c(
                 "div",
-                { staticClass: "col-span-2 lg:text-center lg:pt-6 mb-4" },
+                { staticClass: "col-span-2 lg:text-center lg:pt-2 mb-4" },
                 [
                   _c("img", {
                     staticClass: "rounded-xl",
@@ -21058,8 +21068,13 @@ var render = function() {
                     _vm._v(
                       "\n                    " +
                         _vm._s(_vm.robot.name) +
-                        "\n                "
-                    )
+                        "\n                    "
+                    ),
+                    _vm.robot.outOfOrder
+                      ? _c("span", { staticClass: "text-sm text-red-600" }, [
+                          _vm._v("Out of order")
+                        ])
+                      : _vm._e()
                   ]
                 ),
                 _vm._v(" "),
@@ -21070,13 +21085,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("p", [
                     _vm._v("Experience: " + _vm._s(_vm.robot.experience))
-                  ]),
-                  _vm._v(" "),
-                  !_vm.robot.outOfOrder
-                    ? _c("p", [_vm._v("Not out of order")])
-                    : _c("p", { staticClass: "text-red-600" }, [
-                        _vm._v("Out of order")
-                      ])
+                  ])
                 ])
               ])
             ]
