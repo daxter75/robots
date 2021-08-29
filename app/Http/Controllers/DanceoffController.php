@@ -21,7 +21,7 @@ class DanceoffController extends Controller
 
     public function index()
     {
-        return DanceoffResource::collection(Danceoff::orderBy('id', 'DESC')->get());
+        return DanceoffResource::collection(Danceoff::orderBy('id', 'DESC')->limit(100)->get());
     }
 
     public function store()
@@ -69,7 +69,7 @@ class DanceoffController extends Controller
 
     public function populated()
     {
-        $danceoffs = Danceoff::all()->toArray();
+        $danceoffs = Danceoff::limit(100)->get()->toArray();
         $res = [];
         foreach ($danceoffs as $danceoff) {
             array_push($res,  [
