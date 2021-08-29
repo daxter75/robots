@@ -2105,8 +2105,113 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "DanceoffsCreate"
+  name: "DanceoffsCreate",
+  data: function data() {
+    return {
+      teamA: null,
+      teamB: null,
+      teamAname: '',
+      teamBname: '',
+      checkedTeamA: [],
+      checkedTeamB: [],
+      matches: '',
+      teamWinner: '',
+      btnDisabled: false
+    };
+  },
+  props: ['endpoint'],
+  mounted: function mounted() {
+    var _this = this;
+
+    this.btnDisabled = false, axios.get('/api/robots').then(function (response) {
+      _this.teamA = response.data;
+      _this.teamB = response.data;
+      _this.loading = false;
+    })["catch"](function (error) {
+      _this.loading = false;
+      alert('Unable to fetch robots.');
+    });
+  },
+  methods: {
+    startDanceoff: function startDanceoff() {
+      var _this2 = this;
+
+      var lengthA = this.checkedTeamA.length;
+      var lengthB = this.checkedTeamB.length;
+
+      if (lengthA !== 5 || lengthB !== 5) {
+        alert('Number of dancers are not correct');
+        return 0;
+      }
+
+      var myJson = {
+        danceoffs: {}
+      };
+      var myDanceoffs = [];
+      var pointsA = 0;
+      var pointsB = 0;
+
+      for (var i = 0; i < 5; i++) {
+        var obj = {};
+        obj['winner'] = Math.random() < 0.5 ? this.checkedTeamA[i] : this.checkedTeamB[i];
+        obj['opponents'] = [this.checkedTeamA[i], this.checkedTeamB[i]];
+        this.matches += 'Dancer ' + this.checkedTeamA[i] + ' vs Dancer ' + this.checkedTeamB[i] + ', winner: ' + obj['winner'] + '<br />';
+        parseInt(obj['winner']) === this.checkedTeamA[i] ? pointsA++ : pointsB++;
+        myDanceoffs.push(obj);
+      }
+
+      myJson.danceoffs = myDanceoffs;
+      this.teamWinner = pointsA > pointsB ? this.teamAname : this.teamBname;
+      this.teamWinner += ' wins!';
+      axios.post('/api/danceoffs', myJson).then(function (response) {
+        _this2.resp = JSON.stringify(response);
+        console.log(_this2.resp);
+        _this2.btnDisabled = true;
+      })["catch"](function (error) {
+        _this2.errorMessage = error.message;
+        console.error("There was an error!", error);
+      });
+    },
+    checkDisable: function checkDisable(team, checked) {
+      return team.outOfOrder || checked.includes(team.id);
+    },
+    clearAll: function clearAll() {
+      this.teamAname = '';
+      this.teamBname = '';
+      this.checkedTeamA = [];
+      this.checkedTeamB = [];
+      this.matches = '';
+      this.teamWinner = '';
+      this.btnDisabled = false;
+    }
+  }
 });
 
 /***/ }),
@@ -20919,26 +21024,236 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h1", { staticClass: "mb-4 text-2xl font-bold" }, [
-        _vm._v("Create two teams")
-      ]),
+  return _c("div", [
+    _c("h1", { staticClass: "mb-4 text-2xl font-bold" }, [
+      _vm._v("Create two teams")
+    ]),
+    _vm._v(" "),
+    _c("p", [
+      _vm._v(
+        'Choose 5 robots by every team. Robots with "out of order" are disabled and can\'t dance.'
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex flex-row" }, [
+      _c(
+        "div",
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.teamAname,
+                expression: "teamAname"
+              }
+            ],
+            attrs: { placeholder: "Insert a name of team A" },
+            domProps: { value: _vm.teamAname },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.teamAname = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.teamA, function(dancersA) {
+            return _c("div", [
+              _c("div", { staticClass: "pl-4" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.checkedTeamA,
+                      expression: "checkedTeamA"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    disabled: _vm.checkDisable(dancersA, _vm.checkedTeamB)
+                  },
+                  domProps: {
+                    value: dancersA.id,
+                    checked: Array.isArray(_vm.checkedTeamA)
+                      ? _vm._i(_vm.checkedTeamA, dancersA.id) > -1
+                      : _vm.checkedTeamA
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.checkedTeamA,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = dancersA.id,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.checkedTeamA = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.checkedTeamA = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.checkedTeamA = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    class: _vm.checkDisable(dancersA, _vm.checkedTeamB)
+                      ? "text-gray-400 line-through"
+                      : ""
+                  },
+                  [_vm._v(_vm._s(dancersA.id) + ". " + _vm._s(dancersA.name))]
+                )
+              ])
+            ])
+          }),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(_vm._s(_vm.teamAname) + " "),
+            _c(
+              "span",
+              {
+                class:
+                  _vm.checkedTeamA.length === 5
+                    ? "text-green-400"
+                    : "text-red-400"
+              },
+              [_vm._v(_vm._s(_vm.checkedTeamA))]
+            )
+          ])
+        ],
+        2
+      ),
       _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          'Choose 5 robots by every team. Robots with "out of order" can\'t dance.'
-        )
-      ])
-    ])
-  }
-]
+      _c(
+        "div",
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.teamBname,
+                expression: "teamBname"
+              }
+            ],
+            attrs: { placeholder: "Insert a name of team B" },
+            domProps: { value: _vm.teamBname },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.teamBname = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.teamB, function(dancersB) {
+            return _c("div", [
+              _c("div", { staticClass: "pl-4" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.checkedTeamB,
+                      expression: "checkedTeamB"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    disabled: _vm.checkDisable(dancersB, _vm.checkedTeamA)
+                  },
+                  domProps: {
+                    value: dancersB.id,
+                    checked: Array.isArray(_vm.checkedTeamB)
+                      ? _vm._i(_vm.checkedTeamB, dancersB.id) > -1
+                      : _vm.checkedTeamB
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.checkedTeamB,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = dancersB.id,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.checkedTeamB = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.checkedTeamB = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.checkedTeamB = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    class: _vm.checkDisable(dancersB, _vm.checkedTeamA)
+                      ? "text-gray-400 line-through"
+                      : ""
+                  },
+                  [_vm._v(_vm._s(dancersB.id) + ". " + _vm._s(dancersB.name))]
+                )
+              ])
+            ])
+          }),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(_vm._s(_vm.teamBname) + " "),
+            _c(
+              "span",
+              {
+                class:
+                  _vm.checkedTeamB.length === 5
+                    ? "text-green-400"
+                    : "text-red-400"
+              },
+              [_vm._v(_vm._s(_vm.checkedTeamB))]
+            )
+          ])
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        attrs: { disabled: _vm.btnDisabled },
+        on: { click: _vm.startDanceoff }
+      },
+      [_vm._v("Let's dance")]
+    ),
+    _vm._v(" "),
+    _c("p", { domProps: { innerHTML: _vm._s(_vm.matches) } }),
+    _vm._v(" "),
+    _c("p", { domProps: { innerHTML: _vm._s(_vm.teamWinner) } }),
+    _vm._v(" "),
+    _vm.btnDisabled
+      ? _c("button", { on: { click: _vm.clearAll } }, [_vm._v("Again?")])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
