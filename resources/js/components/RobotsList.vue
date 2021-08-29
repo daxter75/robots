@@ -40,7 +40,7 @@ export default {
             })
         .catch(error => {
             this.loading = false
-            alert('Unable to fetch contacts.')
+            alert('Unable to fetch robots.')
         })
     }
 }

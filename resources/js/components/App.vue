@@ -6,6 +6,10 @@
                     <router-link to="/" class="flex items-center py-2 hover:text-blue-600 text-sm">HOME</router-link>
                     <p class="pt-12 text-gray-500 text-xs uppercase font-bold">ROBOTS</p>
                     <router-link to="/robots" class="flex items-center py-2 hover:text-blue-600 text-sm">Robot list</router-link>
+                    <p class="pt-12 text-gray-500 text-xs uppercase font-bold">DANCE</p>
+                    <router-link to="/danceoffs" class="flex items-center py-2 hover:text-blue-600 text-sm">Show Danceoffs</router-link>
+                    <router-link to="/leaderboard" class="flex items-center py-2 hover:text-blue-600 text-sm">Leaderboard</router-link>
+                    <router-link to="/danceoffs/create" class="flex items-center py-2 hover:text-blue-600 text-sm">New Danceoff</router-link>
                 </nav>
             </div>
             <div class="flex flex-col flex-1 h-screen overflow-y-hidden">
