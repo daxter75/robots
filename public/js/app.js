@@ -2131,6 +2131,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "DanceoffsCreate",
   data: function data() {
@@ -2165,6 +2169,11 @@ __webpack_require__.r(__webpack_exports__);
 
       var lengthA = this.checkedTeamA.length;
       var lengthB = this.checkedTeamB.length;
+
+      if (!this.teamAname || !this.teamBname) {
+        alert('Insert names of both teams');
+        return 0;
+      }
 
       if (lengthA !== 5 || lengthB !== 5) {
         alert('Number of dancers are not correct');
@@ -21035,10 +21044,15 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "flex flex-row" }, [
+    _c("div", { staticClass: "flex flex-row justify-around" }, [
       _c(
         "div",
+        { staticClass: "w-1/2 lg:w-5/12 bg-blue-100 rounded-xl p-6" },
         [
+          _c("p", { staticClass: "mb-1 text-blue-900 text-xs" }, [
+            _vm._v("Name of team A:")
+          ]),
+          _vm._v(" "),
           _c("input", {
             directives: [
               {
@@ -21048,7 +21062,9 @@ var render = function() {
                 expression: "teamAname"
               }
             ],
-            attrs: { placeholder: "Insert a name of team A" },
+            staticClass:
+              "w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900",
+            attrs: { placeholder: "Insert name of team A" },
             domProps: { value: _vm.teamAname },
             on: {
               input: function($event) {
@@ -21062,7 +21078,7 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.teamA, function(dancersA) {
             return _c("div", [
-              _c("div", { staticClass: "pl-4" }, [
+              _c("div", { staticClass: "text-blue-900" }, [
                 _c("input", {
                   directives: [
                     {
@@ -21108,6 +21124,7 @@ var render = function() {
                 _c(
                   "label",
                   {
+                    staticClass: "text-sm lg:text-base",
                     class: _vm.checkDisable(dancersA, _vm.checkedTeamB)
                       ? "text-gray-400 line-through"
                       : ""
@@ -21118,26 +21135,35 @@ var render = function() {
             ])
           }),
           _vm._v(" "),
-          _c("p", [
-            _vm._v(_vm._s(_vm.teamAname) + " "),
-            _c(
-              "span",
-              {
-                class:
-                  _vm.checkedTeamA.length === 5
-                    ? "text-green-400"
-                    : "text-red-400"
-              },
-              [_vm._v(_vm._s(_vm.checkedTeamA))]
-            )
-          ])
+          _vm.teamAname
+            ? _c("p", { staticClass: "pt-8 text-blue-700 text-sm" }, [
+                _vm._v("Team " + _vm._s(_vm.teamAname) + ": "),
+                _vm.checkedTeamA.length
+                  ? _c(
+                      "span",
+                      {
+                        class:
+                          _vm.checkedTeamA.length === 5
+                            ? "text-green-400"
+                            : "text-red-400"
+                      },
+                      [_vm._v(_vm._s(_vm.checkedTeamA))]
+                    )
+                  : _vm._e()
+              ])
+            : _vm._e()
         ],
         2
       ),
       _vm._v(" "),
       _c(
         "div",
+        { staticClass: "w-1/2 lg:w-5/12 bg-blue-100 rounded-xl p-6" },
         [
+          _c("p", { staticClass: "mb-1 text-blue-900 text-xs" }, [
+            _vm._v("Name of team B:")
+          ]),
+          _vm._v(" "),
           _c("input", {
             directives: [
               {
@@ -21147,7 +21173,9 @@ var render = function() {
                 expression: "teamBname"
               }
             ],
-            attrs: { placeholder: "Insert a name of team B" },
+            staticClass:
+              "w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900",
+            attrs: { placeholder: "Insert name of team B" },
             domProps: { value: _vm.teamBname },
             on: {
               input: function($event) {
@@ -21161,7 +21189,7 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.teamB, function(dancersB) {
             return _c("div", [
-              _c("div", { staticClass: "pl-4" }, [
+              _c("div", { staticClass: "text-blue-900" }, [
                 _c("input", {
                   directives: [
                     {
@@ -21207,6 +21235,7 @@ var render = function() {
                 _c(
                   "label",
                   {
+                    staticClass: "text-sm lg:text-base",
                     class: _vm.checkDisable(dancersB, _vm.checkedTeamA)
                       ? "text-gray-400 line-through"
                       : ""
@@ -21217,32 +21246,40 @@ var render = function() {
             ])
           }),
           _vm._v(" "),
-          _c("p", [
-            _vm._v(_vm._s(_vm.teamBname) + " "),
-            _c(
-              "span",
-              {
-                class:
-                  _vm.checkedTeamB.length === 5
-                    ? "text-green-400"
-                    : "text-red-400"
-              },
-              [_vm._v(_vm._s(_vm.checkedTeamB))]
-            )
-          ])
+          _vm.teamBname
+            ? _c("p", { staticClass: "pt-8 text-blue-700 text-sm" }, [
+                _vm._v("Team " + _vm._s(_vm.teamBname) + ": "),
+                _vm.checkedTeamB.length
+                  ? _c(
+                      "span",
+                      {
+                        class:
+                          _vm.checkedTeamB.length === 5
+                            ? "text-green-400"
+                            : "text-red-400"
+                      },
+                      [_vm._v(_vm._s(_vm.checkedTeamB))]
+                    )
+                  : _vm._e()
+              ])
+            : _vm._e()
         ],
         2
       )
     ]),
     _vm._v(" "),
-    _c(
-      "button",
-      {
-        attrs: { disabled: _vm.btnDisabled },
-        on: { click: _vm.startDanceoff }
-      },
-      [_vm._v("Let's dance")]
-    ),
+    _c("div", { staticClass: "w-full my-4 text-center" }, [
+      _c(
+        "button",
+        {
+          staticClass:
+            "bg-blue-900 text-blue-200 hover:text-white px-8 py-2 rounded",
+          attrs: { disabled: _vm.btnDisabled },
+          on: { click: _vm.startDanceoff }
+        },
+        [_vm._v("Let's dance")]
+      )
+    ]),
     _vm._v(" "),
     _c("p", { domProps: { innerHTML: _vm._s(_vm.matches) } }),
     _vm._v(" "),

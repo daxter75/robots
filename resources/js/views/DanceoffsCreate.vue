@@ -2,29 +2,33 @@
     <div>
         <h1 class="mb-4 text-2xl font-bold">Create two teams</h1>
         <p>Choose 5 robots by every team. Robots with "out of order" are disabled and can't dance.</p>
-        <div class="flex flex-row">
-            <div>
-                <input v-model="teamAname" placeholder="Insert a name of team A" />
+        <div class="flex flex-row justify-around">
+            <div class="w-1/2 lg:w-5/12 bg-blue-100 rounded-xl p-6">
+                <p class="mb-1 text-blue-900 text-xs">Name of team A:</p>
+                <input v-model="teamAname" class="w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900" placeholder="Insert name of team A" />
                 <div v-for="dancersA in teamA">
-                    <div class="pl-4">
+                    <div class="text-blue-900">
                         <input type="checkbox" :value="dancersA.id" v-model="checkedTeamA" :disabled="checkDisable(dancersA, checkedTeamB)">
-                        <label :class="checkDisable(dancersA, checkedTeamB) ? 'text-gray-400 line-through' : ''">{{ dancersA.id }}. {{ dancersA.name }}</label>
+                        <label :class="checkDisable(dancersA, checkedTeamB) ? 'text-gray-400 line-through' : ''" class="text-sm lg:text-base">{{ dancersA.id }}. {{ dancersA.name }}</label>
                     </div>
                 </div>
-                <p>{{ teamAname }} <span :class="checkedTeamA.length === 5 ? 'text-green-400' : 'text-red-400'">{{ checkedTeamA }}</span></p>
+                <p v-if="teamAname" class="pt-8 text-blue-700 text-sm">Team {{ teamAname }}: <span v-if="checkedTeamA.length" :class="checkedTeamA.length === 5 ? 'text-green-400' : 'text-red-400'">{{ checkedTeamA }}</span></p>
             </div>
-            <div>
-                <input v-model="teamBname"  placeholder="Insert a name of team B" />
+            <div class="w-1/2 lg:w-5/12 bg-blue-100 rounded-xl p-6">
+                <p class="mb-1 text-blue-900 text-xs">Name of team B:</p>
+                <input v-model="teamBname" class="w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900" placeholder="Insert name of team B" />
                 <div v-for="dancersB in teamB">
-                    <div class="pl-4">
+                    <div class="text-blue-900">
                         <input type="checkbox" :value="dancersB.id" v-model="checkedTeamB" :disabled="checkDisable(dancersB, checkedTeamA)">
-                        <label :class="checkDisable(dancersB, checkedTeamA) ? 'text-gray-400 line-through' : ''">{{ dancersB.id }}. {{ dancersB.name }}</label>
+                        <label :class="checkDisable(dancersB, checkedTeamA) ? 'text-gray-400 line-through' : ''" class="text-sm lg:text-base">{{ dancersB.id }}. {{ dancersB.name }}</label>
                     </div>
                 </div>
-                <p>{{ teamBname }} <span :class="checkedTeamB.length === 5 ? 'text-green-400' : 'text-red-400'">{{ checkedTeamB }}</span></p>
+                <p v-if="teamBname" class="pt-8 text-blue-700 text-sm">Team {{ teamBname }}: <span v-if="checkedTeamB.length" :class="checkedTeamB.length === 5 ? 'text-green-400' : 'text-red-400'">{{ checkedTeamB }}</span></p>
             </div>
         </div>
-        <button @click="startDanceoff" :disabled="btnDisabled">Let's dance</button>
+        <div class="w-full my-4 text-center">
+            <button @click="startDanceoff" class="bg-blue-900 text-blue-200 hover:text-white px-8 py-2 rounded" :disabled="btnDisabled">Let's dance</button>
+        </div>
         <p v-html="matches"></p>
         <p v-html="teamWinner"></p>
         <button @click="clearAll" v-if="btnDisabled">Again?</button>
@@ -67,6 +71,10 @@ export default {
         startDanceoff() {
             let lengthA = this.checkedTeamA.length
             let lengthB = this.checkedTeamB.length
+            if (!this.teamAname || !this.teamBname) {
+                alert('Insert names of both teams')
+                return 0;
+            }
             if (lengthA !== 5 || lengthB !== 5) {
                 alert('Number of dancers are not correct')
                 return 0;
