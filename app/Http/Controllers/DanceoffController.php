@@ -87,9 +87,7 @@ class DanceoffController extends Controller
         $res = [];
         $wins = Danceoff::select(Danceoff::raw("count('winner') as wins"), 'winner')
             ->groupBy('winner')
-            ->groupBy('created_at')
             ->orderBy('wins', 'desc')
-            ->orderBy('created_at', 'desc')
             ->get()
             ->toArray();
 
