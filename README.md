@@ -7,8 +7,8 @@ Imagine a world where all robots have only one goal - to win the Robo-Dance comp
 
 ## Task
 
-Backend: We would like to ask you to create a simple REST API to provide the robots with the stage they were always dreaming about.  
-Frontend: We would like you to create a simple frontend web application to provide the robots with the stage they were always dreaming about.
+Backend: Create a simple REST API to provide the robots with the stage they were always dreaming about.  
+Frontend: Create a simple frontend web application to provide the robots with the stage they were always dreaming about.
 
 ## Installation
 
