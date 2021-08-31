@@ -1,64 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# RoboDance application
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About App
 
-## About Laravel
+"RoboDance" is a simple web application made as a coding challenge.
+Imagine a world where all robots have only one goal - to win the Robo-Dance competition!
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Task
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Backend: We would like to ask you to create a simple REST API to provide the robots with the stage they were always dreaming about.  
+Frontend: We would like you to create a simple frontend web application to provide the robots with the stage they were always dreaming about.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Installation
 
-## Learning Laravel
+### Requirements
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- php 7.3 +
+- mysql/maria or sqlite database
+- composer
+- nodejs and npm
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Steps
 
-## Laravel Sponsors
+- pull code from GitHub
+- composer install
+- npm install
+- make a schema in database
+- create ENV file with database setup
+- artisan:
+    - generate key
+    - migrate and seed data
+- make a local domain or use Laravel serve
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Description
 
-### Premium Partners
+Migrations and seeds generate a DB tables and fill tables with some robots and danceoffs.    
+User can show robots, details about every robot, previous competitions and leaderboard. Also, user can organize new danceoff.  
+App is optimized for desktop and mobile devices.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+### API routes
 
-## Contributing
+GET
+```
+- /api/robots (get all robots)
+- /api/robots/{id} (get a specific robot)
+- /api/danceoffs (get the 100 latest danceoffs)
+- /api/danceoffs/populated (get the 100 latest danceoffs with populated robot models)
+```
+POST
+```
+- /api/danceoffs (create danceoffs between robots)
+```
+POST request example
+```
+{
+  "danceoffs": [    
+    {
+      "winner": 10,
+      "opponents": [
+        7,
+        10
+      ]
+    },
+    {
+      "winner": 4,
+      "opponents": [
+        11,
+        4
+      ]
+    }
+  ]
+}
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Used technologies
 
-## Code of Conduct
+- [Laravel framework](https://laravel.com/)
+- [VueJS](https://vuejs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+## Contributors
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- [Darko Dujin](https://github.com/daxter75)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Copyright © 2021.
+Released under the [MIT License](LICENSE).

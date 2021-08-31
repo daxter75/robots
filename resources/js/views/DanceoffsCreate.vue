@@ -7,7 +7,7 @@
         <div class="flex flex-row justify-around mt-2">
             <div class="w-1/2 lg:w-5/12 bg-blue-100 rounded-xl p-2 md:p-6 border border-blue-200">
                 <p class="mb-1 text-blue-900 text-xs">Name of team A:</p>
-                <input v-model="teamAname" class="w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900" placeholder="Insert name of team A" />
+                <input v-model="teamAname" class="w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900 text-xs md:text-sm" placeholder="Insert name of team A" />
                 <div v-for="dancersA in teamA">
                     <div class="text-blue-900">
                         <input type="checkbox" :value="dancersA.id" v-model="checkedTeamA" :disabled="checkDisable(dancersA, checkedTeamB)">
@@ -18,7 +18,7 @@
             </div>
             <div class="w-1/2 lg:w-5/12 bg-blue-100 rounded-xl p-2 md:p-6 border border-blue-200">
                 <p class="mb-1 text-blue-900 text-xs">Name of team B:</p>
-                <input v-model="teamBname" class="w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900" placeholder="Insert name of team B" />
+                <input v-model="teamBname" class="w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900 text-xs md:text-sm" placeholder="Insert name of team B" />
                 <div v-for="dancersB in teamB">
                     <div class="text-blue-900">
                         <input type="checkbox" :value="dancersB.id" v-model="checkedTeamB" :disabled="checkDisable(dancersB, checkedTeamA)">

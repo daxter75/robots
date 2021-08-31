@@ -17,10 +17,6 @@ use Symfony\Component\HttpFoundation\Response;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('robots', [RobotController::class, 'index']);
 Route::get('robots/{robot:id}', [RobotController::class, 'show']);
 

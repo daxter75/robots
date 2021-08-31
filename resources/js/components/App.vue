@@ -40,7 +40,7 @@
                         {{ title }}
                     </div>
                 </div>
-                <div class="flex flex-col overflow-y-hidden flex-1 mb-16 md:mb-0">
+                <div class="flex flex-col overflow-y-hidden flex-1 mb-16 sm:mb-1">
                     <router-view class="p-6 overflow-x-hidden"></router-view>
                 </div>
             </div>

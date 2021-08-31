@@ -42306,7 +42306,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "flex flex-col overflow-y-hidden flex-1 mb-16 md:mb-0"
+                "flex flex-col overflow-y-hidden flex-1 mb-16 sm:mb-1"
             },
             [_c("router-view", { staticClass: "p-6 overflow-x-hidden" })],
             1
@@ -42631,7 +42631,7 @@ var render = function() {
               }
             ],
             staticClass:
-              "w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900",
+              "w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900 text-xs md:text-sm",
             attrs: { placeholder: "Insert name of team A" },
             domProps: { value: _vm.teamAname },
             on: {
@@ -42749,7 +42749,7 @@ var render = function() {
               }
             ],
             staticClass:
-              "w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900",
+              "w-full bg-blue-50 focus:bg-white mb-4 p-2 rounded text-blue-900 text-xs md:text-sm",
             attrs: { placeholder: "Insert name of team B" },
             domProps: { value: _vm.teamBname },
             on: {
