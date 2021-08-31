@@ -2135,6 +2135,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "DanceoffsCreate",
   data: function data() {
@@ -2186,6 +2193,7 @@ __webpack_require__.r(__webpack_exports__);
       var myDanceoffs = [];
       var pointsA = 0;
       var pointsB = 0;
+      this.matches = 'RESULTS <br/>';
 
       for (var i = 0; i < 5; i++) {
         var obj = {};
@@ -2197,7 +2205,8 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       myJson.danceoffs = myDanceoffs;
-      this.teamWinner = pointsA > pointsB ? this.teamAname : this.teamBname;
+      this.teamWinner = 'Team ';
+      this.teamWinner += pointsA > pointsB ? this.teamAname : this.teamBname;
       this.teamWinner += ' wins!';
       axios.post('/api/danceoffs', myJson).then(function (response) {
         _this2.resp = JSON.stringify(response);
@@ -21038,16 +21047,21 @@ var render = function() {
       _vm._v("Create two teams")
     ]),
     _vm._v(" "),
-    _c("p", [
-      _vm._v(
-        'Choose 5 robots by every team. Robots with "out of order" are disabled and can\'t dance.'
-      )
+    _c("p", { staticClass: "text-sm" }, [
+      _vm._v("Give a name of both teams. Choose 5 robots by every team.")
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "flex flex-row justify-around" }, [
+    _c("p", { staticClass: "text-xs" }, [
+      _vm._v('Robots with "out of order" are disabled and can\'t dance.')
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex flex-row justify-around mt-2" }, [
       _c(
         "div",
-        { staticClass: "w-1/2 lg:w-5/12 bg-blue-100 rounded-xl p-6" },
+        {
+          staticClass:
+            "w-1/2 lg:w-5/12 bg-blue-100 rounded-xl p-2 md:p-6 border border-blue-200"
+        },
         [
           _c("p", { staticClass: "mb-1 text-blue-900 text-xs" }, [
             _vm._v("Name of team A:")
@@ -21124,7 +21138,7 @@ var render = function() {
                 _c(
                   "label",
                   {
-                    staticClass: "text-sm lg:text-base",
+                    staticClass: "text-xs md:text-sm lg:text-base",
                     class: _vm.checkDisable(dancersA, _vm.checkedTeamB)
                       ? "text-gray-400 line-through"
                       : ""
@@ -21136,21 +21150,25 @@ var render = function() {
           }),
           _vm._v(" "),
           _vm.teamAname
-            ? _c("p", { staticClass: "pt-8 text-blue-700 text-sm" }, [
-                _vm._v("Team " + _vm._s(_vm.teamAname) + ": "),
-                _vm.checkedTeamA.length
-                  ? _c(
-                      "span",
-                      {
-                        class:
-                          _vm.checkedTeamA.length === 5
-                            ? "text-green-400"
-                            : "text-red-400"
-                      },
-                      [_vm._v(_vm._s(_vm.checkedTeamA))]
-                    )
-                  : _vm._e()
-              ])
+            ? _c(
+                "p",
+                { staticClass: "pt-8 text-blue-700 text-xs md:text-sm" },
+                [
+                  _vm._v("Team " + _vm._s(_vm.teamAname) + ": "),
+                  _vm.checkedTeamA.length
+                    ? _c(
+                        "span",
+                        {
+                          class:
+                            _vm.checkedTeamA.length === 5
+                              ? "text-green-400"
+                              : "text-red-400"
+                        },
+                        [_vm._v(_vm._s(_vm.checkedTeamA))]
+                      )
+                    : _vm._e()
+                ]
+              )
             : _vm._e()
         ],
         2
@@ -21158,7 +21176,10 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "w-1/2 lg:w-5/12 bg-blue-100 rounded-xl p-6" },
+        {
+          staticClass:
+            "w-1/2 lg:w-5/12 bg-blue-100 rounded-xl p-2 md:p-6 border border-blue-200"
+        },
         [
           _c("p", { staticClass: "mb-1 text-blue-900 text-xs" }, [
             _vm._v("Name of team B:")
@@ -21235,7 +21256,7 @@ var render = function() {
                 _c(
                   "label",
                   {
-                    staticClass: "text-sm lg:text-base",
+                    staticClass: "text-xs md:text-sm lg:text-base",
                     class: _vm.checkDisable(dancersB, _vm.checkedTeamA)
                       ? "text-gray-400 line-through"
                       : ""
@@ -21247,21 +21268,25 @@ var render = function() {
           }),
           _vm._v(" "),
           _vm.teamBname
-            ? _c("p", { staticClass: "pt-8 text-blue-700 text-sm" }, [
-                _vm._v("Team " + _vm._s(_vm.teamBname) + ": "),
-                _vm.checkedTeamB.length
-                  ? _c(
-                      "span",
-                      {
-                        class:
-                          _vm.checkedTeamB.length === 5
-                            ? "text-green-400"
-                            : "text-red-400"
-                      },
-                      [_vm._v(_vm._s(_vm.checkedTeamB))]
-                    )
-                  : _vm._e()
-              ])
+            ? _c(
+                "p",
+                { staticClass: "pt-8 text-blue-700 text-xs md:text-sm" },
+                [
+                  _vm._v("Team " + _vm._s(_vm.teamBname) + ": "),
+                  _vm.checkedTeamB.length
+                    ? _c(
+                        "span",
+                        {
+                          class:
+                            _vm.checkedTeamB.length === 5
+                              ? "text-green-400"
+                              : "text-red-400"
+                        },
+                        [_vm._v(_vm._s(_vm.checkedTeamB))]
+                      )
+                    : _vm._e()
+                ]
+              )
             : _vm._e()
         ],
         2
@@ -21281,12 +21306,31 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("p", { domProps: { innerHTML: _vm._s(_vm.matches) } }),
-    _vm._v(" "),
-    _c("p", { domProps: { innerHTML: _vm._s(_vm.teamWinner) } }),
+    _vm.matches
+      ? _c("div", { staticClass: "mt-4 w-full text-center" }, [
+          _c("p", {
+            staticClass:
+              "py-2 text-blue-800 text-sm border border-blue-800 rounded",
+            domProps: { innerHTML: _vm._s(_vm.matches) }
+          }),
+          _vm._v(" "),
+          _c("p", {
+            staticClass: "mt-2 font-bold text-green-700 text-xl",
+            domProps: { innerHTML: _vm._s(_vm.teamWinner) }
+          })
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _vm.btnDisabled
-      ? _c("button", { on: { click: _vm.clearAll } }, [_vm._v("Again?")])
+      ? _c(
+          "button",
+          {
+            staticClass:
+              "bg-blue-900 text-blue-200 hover:text-white px-8 py-2 rounded",
+            on: { click: _vm.clearAll }
+          },
+          [_vm._v("Again?")]
+        )
       : _vm._e()
   ])
 }
