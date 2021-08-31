@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="mb-4 text-2xl font-bold">Create two teams</h1>
-        <p class="text-sm">Give a name of both teams. Choose 5 robots by every team.</p>
+        <p class="text-sm">Enter the names of both teams. Select 5 robots for each team.</p>
         <p class="text-xs">Robots with "out of order" are disabled and can't dance.</p>
 
         <div class="flex flex-row justify-around mt-2">

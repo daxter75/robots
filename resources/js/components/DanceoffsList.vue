@@ -12,7 +12,7 @@
                         Winner: <span class="font-bold">{{ danceoff.winner.name }}</span>,
                         Loser: <span class="font-bold text-blue-400">{{ danceoff.loser.name }}</span>
                     </p>
-                    <p class="text-gray-400 w-full text-xs">Danced at: <time>{{ danceoff.dancedAt }}</time></p>
+                    <p class="text-gray-400 w-full text-xs">Danced at: <time>{{ formatDateTime(danceoff.dancedAt) }}</time></p>
                 </div>
             </div>
         </div>
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
     name: "DanceoffsList",
     data() {
@@ -41,6 +43,11 @@ export default {
                 this.loading = false
                 alert('Unable to fetch danceoffs.')
             })
+    },
+    methods: {
+        formatDateTime(val) {
+            return val ? moment(val).format('DD.MM.YYYY HH:mm:ss') : ''
+        },
     }
 }
 </script>
