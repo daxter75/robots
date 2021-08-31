@@ -1,5 +1,8 @@
 <template>
-    <h1>start</h1>
+    <div>
+        <h1 class="mb-4 text-2xl font-bold">RoboDance application</h1>
+        <p>"RoboDance" is a simple web application made as a coding challenge.</p>
+    </div>
 </template>
 
 <script>

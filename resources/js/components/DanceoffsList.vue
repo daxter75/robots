@@ -7,7 +7,7 @@
             </div>
             <div v-for="danceoff in danceoffs">
                 <div class="mb-4 pl-4">
-                    <p class="text-blue-600">
+                    <p class="text-blue-600 text-sm md:text-base">
                         Danceoff {{ danceoff.id }}<br />
                         Winner: <span class="font-bold">{{ danceoff.winner.name }}</span>,
                         Loser: <span class="font-bold text-blue-400">{{ danceoff.loser.name }}</span>

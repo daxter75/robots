@@ -1876,6 +1876,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "App",
   data: function data() {
@@ -2077,6 +2096,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
 //
 //
 //
@@ -20742,6 +20764,70 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
+        {
+          staticClass: "sm:hidden absolute bottom-0 bg-gray-200 h-16 w-screen"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "flex justify-around items-center h-16" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "flex flex-col items-center py-2",
+                  attrs: { to: "/" }
+                },
+                [_c("div", { staticClass: "text-xs" }, [_vm._v("Home")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "flex flex-col items-center py-2",
+                  attrs: { to: "/robots" }
+                },
+                [_c("div", { staticClass: "text-xs" }, [_vm._v("Robots")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "flex flex-col items-center py-2",
+                  attrs: { to: "/danceoffs" }
+                },
+                [_c("div", { staticClass: "text-xs" }, [_vm._v("Danceoffs")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "flex flex-col items-center py-2",
+                  attrs: { to: "/leaderboard" }
+                },
+                [_c("div", { staticClass: "text-xs" }, [_vm._v("Leaderboard")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "flex flex-col items-center py-2",
+                  attrs: { to: "/danceoffs/create" }
+                },
+                [
+                  _c("div", { staticClass: "text-xs" }, [
+                    _vm._v("New Danceoff")
+                  ])
+                ]
+              )
+            ],
+            1
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
         { staticClass: "flex flex-col flex-1 h-screen overflow-y-hidden" },
         [
           _c(
@@ -20776,7 +20862,10 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "flex flex-col overflow-y-hidden flex-1" },
+            {
+              staticClass:
+                "flex flex-col overflow-y-hidden flex-1 mb-16 md:mb-0"
+            },
             [_c("router-view", { staticClass: "p-6 overflow-x-hidden" })],
             1
           )
@@ -20821,20 +20910,24 @@ var render = function() {
             _vm._l(_vm.danceoffs, function(danceoff) {
               return _c("div", [
                 _c("div", { staticClass: "mb-4 pl-4" }, [
-                  _c("p", { staticClass: "text-blue-600" }, [
-                    _vm._v(
-                      "\n                    Danceoff " + _vm._s(danceoff.id)
-                    ),
-                    _c("br"),
-                    _vm._v("\n                    Winner: "),
-                    _c("span", { staticClass: "font-bold" }, [
-                      _vm._v(_vm._s(danceoff.winner.name))
-                    ]),
-                    _vm._v(",\n                    Loser: "),
-                    _c("span", { staticClass: "font-bold text-blue-400" }, [
-                      _vm._v(_vm._s(danceoff.loser.name))
-                    ])
-                  ]),
+                  _c(
+                    "p",
+                    { staticClass: "text-blue-600 text-sm md:text-base" },
+                    [
+                      _vm._v(
+                        "\n                    Danceoff " + _vm._s(danceoff.id)
+                      ),
+                      _c("br"),
+                      _vm._v("\n                    Winner: "),
+                      _c("span", { staticClass: "font-bold" }, [
+                        _vm._v(_vm._s(danceoff.winner.name))
+                      ]),
+                      _vm._v(",\n                    Loser: "),
+                      _c("span", { staticClass: "font-bold text-blue-400" }, [
+                        _vm._v(_vm._s(danceoff.loser.name))
+                      ])
+                    ]
+                  ),
                   _vm._v(" "),
                   _c("p", { staticClass: "text-gray-400 w-full text-xs" }, [
                     _vm._v("Danced at: "),
@@ -21017,9 +21110,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("start")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("h1", { staticClass: "mb-4 text-2xl font-bold" }, [
+        _vm._v("RoboDance application")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          '"RoboDance" is a simple web application made as a coding challenge.'
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
