@@ -6,7 +6,7 @@
                 <p>No robots.</p>
             </div>
             <div v-for="robot in robots">
-                <router-link :to="'/robots/' + robot.id" class="flex items-center border-b border-gray-200 p-4 hover:bg-blue-50">
+                <router-link :to="'/robots/' + robot.id" class="flex items-center border-b border-gray-200 p-4 hover:bg-blue-50 focus:outline-none">
                     <div class="pl-4">
                         <p class="text-blue-600 w-full">{{ robot.name}}</p>
                         <p class="text-gray-400 text-xs">

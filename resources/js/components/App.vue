@@ -3,13 +3,13 @@
         <div class="flex">
             <div class="hidden sm:block pl-6 bg-gray-200 w-48 h-screen">
                 <nav class="pt-4">
-                    <router-link to="/" class="flex items-center py-2 hover:text-blue-600 text-sm">HOME</router-link>
+                    <router-link to="/" class="flex items-center py-2 hover:text-blue-600 text-sm focus:outline-none">HOME</router-link>
                     <p class="pt-12 text-gray-500 text-xs uppercase font-bold">ROBOTS</p>
-                    <router-link to="/robots" class="flex items-center py-2 hover:text-blue-600 text-sm">Robot list</router-link>
+                    <router-link to="/robots" class="flex items-center py-2 hover:text-blue-600 text-sm focus:outline-none">Robot list</router-link>
                     <p class="pt-12 text-gray-500 text-xs uppercase font-bold">DANCE</p>
-                    <router-link to="/danceoffs" class="flex items-center py-2 hover:text-blue-600 text-sm">Show Danceoffs</router-link>
-                    <router-link to="/leaderboard" class="flex items-center py-2 hover:text-blue-600 text-sm">Leaderboard</router-link>
-                    <router-link to="/danceoffs/create" class="flex items-center py-2 hover:text-blue-600 text-sm">New Danceoff</router-link>
+                    <router-link to="/danceoffs" class="flex items-center py-2 hover:text-blue-600 text-sm focus:outline-none">Show Danceoffs</router-link>
+                    <router-link to="/leaderboard" class="flex items-center py-2 hover:text-blue-600 text-sm focus:outline-none">Leaderboard</router-link>
+                    <router-link to="/danceoffs/create" class="flex items-center py-2 hover:text-blue-600 text-sm focus:outline-none">New Danceoff</router-link>
                 </nav>
             </div>
             <div class="sm:hidden absolute bottom-0 bg-gray-200 h-16 w-screen">

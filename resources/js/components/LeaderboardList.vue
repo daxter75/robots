@@ -6,7 +6,7 @@
                 <p>No leaderboard list.</p>
             </div>
             <div v-for="(robot, index) in robots">
-                <router-link :to="'/robots/' + robot.winner.id" class="mb-4 pl-4">
+                <router-link :to="'/robots/' + robot.winner.id" class="mb-4 pl-4 focus:outline-none">
                     <p class="text-blue-600">
                         <span>{{ index+1 }}</span>.
                         <span class="font-bold">{{ robot.winner.name }}</span>,
