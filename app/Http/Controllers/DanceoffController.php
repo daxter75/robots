@@ -101,7 +101,7 @@ class DanceoffController extends Controller
         return $res;
     }
 
-    private function searchForRobot($id)
+    private function searchForRobot(int $id)
     {
         foreach ($this->robots as $robot) {
             if ($robot['id'] === $id) {
