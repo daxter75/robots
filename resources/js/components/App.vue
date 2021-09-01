@@ -12,7 +12,7 @@
                     <router-link to="/danceoffs/create" class="flex items-center py-2 hover:text-blue-600 text-sm focus:outline-none">New Danceoff</router-link>
                 </nav>
             </div>
-            <div class="sm:hidden absolute bottom-0 bg-gray-200 h-16 w-screen">
+            <div class="sm:hidden fixed bottom-0 bg-gray-200 h-16 w-screen">
                 <div class="flex justify-around items-center h-16">
                     <router-link to="/" class="flex flex-col items-center py-2">
                         <div class="text-xs">Home</div>
