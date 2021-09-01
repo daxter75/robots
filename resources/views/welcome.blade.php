@@ -14,12 +14,12 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-color: #333">
+<body style="background-color: #333; font-family: Roboto, sans-serif">
 <div id="app" style="max-width: 1280px; margin: 0 auto">
     <main class="h-screen">
         <App></App>
