@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="loading">Loadnig...</div>
+        <div v-if="loading">Loading...</div>
         <div v-else>
             <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10 rounded-xl bg-blue-100 border border-gray-200">
                 <div class="col-span-2 lg:text-center lg:pt-2 mb-4">

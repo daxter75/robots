@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="loading">Loadnig...</div>
+        <div v-if="loading">Loading...</div>
         <div v-else>
             <div v-if="danceoffs.length === 0">
                 <p>No Danceoffs.</p>
