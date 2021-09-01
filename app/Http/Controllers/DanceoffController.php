@@ -97,7 +97,6 @@ class DanceoffController extends Controller
                 'winner' => $this->searchForRobot($win['winner']),
             ]);
         }
-
         return $res;
     }
 

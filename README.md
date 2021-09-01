@@ -14,10 +14,10 @@ Frontend: Create a simple frontend web application to provide the robots with th
 
 ### Requirements
 
-- php 7.3 +
+- php 7.4 +
 - mysql/maria or sqlite database
 - composer
-- nodejs and npm
+- nodejs and npm (for development)
 
 ### Steps
 
