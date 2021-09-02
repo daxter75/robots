@@ -17,24 +17,24 @@ Frontend: Create a simple frontend web application to provide the robots with th
 - php 7.4 +
 - mysql/maria or sqlite database
 - composer
-- nodejs and npm (for development)
+- nodejs and npm (for development only)
 
 ### Steps
 
 - pull code from GitHub
 - composer install
-- npm install
+- npm install (for development only)
 - make a schema in database
-- create ENV file with database setup
+- create ENV file with database setup (mysql or sqlite)
 - artisan:
     - generate key
-    - migrate and seed data
-- make a local domain or use Laravel serve
+    - migrate and seed data (not necessary if using existing sqlite db file)
+- make a local domain on web server or use Laravel serve
 
 ## Description
 
-Migrations and seeds generate a DB tables and fill tables with some robots and danceoffs.    
-User can show robots, details about every robot, previous competitions and leaderboard. Also, user can organize new danceoff.  
+Migrations and seeds generate a DB tables and fill tables with some (fake) robots and dance offs.    
+User can show robots, details about every robot, previous competitions and leaderboard. Also, user can organize new dance off. Winner and loser are defined on random principle.  
 App is optimized for desktop and mobile devices.
 
 ### API routes
@@ -86,4 +86,3 @@ POST request example
 ## License
 
 Copyright © 2021.
-Released under the [MIT License](LICENSE).
