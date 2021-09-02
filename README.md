@@ -41,14 +41,14 @@ App is optimized for desktop and mobile devices.
 
 GET
 ```
-- /api/robots (get all robots)
-- /api/robots/{id} (get a specific robot)
-- /api/danceoffs (get the 100 latest danceoffs)
-- /api/danceoffs/populated (get the 100 latest danceoffs with populated robot models)
+/api/robots (get all robots)
+/api/robots/{id} (get a specific robot)
+/api/danceoffs (get the 100 latest danceoffs)
+/api/danceoffs/populated (get the 100 latest danceoffs with populated robot models)
 ```
 POST
 ```
-- /api/danceoffs (create danceoffs between robots)
+/api/danceoffs (create danceoffs between robots)
 ```
 POST request example
 ```
